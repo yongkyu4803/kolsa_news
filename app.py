@@ -13,7 +13,7 @@ def main():
     
     data = load_data()
     
-    # 카드 스타일 정의
+    # 카드 스타일 정의 (각 스타일에 !important 추가)
     st.markdown("""
     <style>
     .card {
@@ -24,17 +24,17 @@ def main():
         box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
     }
     .card-title {
-        font-size: 24px;  /* 제목 글자 크기 */
+        font-size: 20px !important;  /* 제목 글자 크기 */
         font-weight: bold;
         margin: 0;
     }
     .card-subinfo {
-        font-size: 12px;  /* 제목의 50% 정도 */
+        font-size: 12px !important;  /* 제목의 50% 정도 */
         color: #555;
-        margin: 0;
+        margin: 2px 0;
     }
     .card-content {
-        font-size: 16.8px;  /* 제목의 70% (24px * 0.7) */
+        font-size: 14px !important;  /* 제목의 70% (24px * 0.7) */
         margin: 5px 0;
     }
     </style>
@@ -46,7 +46,7 @@ def main():
         title_html = f'<p class="card-title"><a href="{row["link"]}" target="_blank" style="text-decoration: none; color: inherit;">{row["title"]}</a></p>'
         # 두 번째 줄: 키워드, 미디어, pubDate
         subinfo_html = f'<p class="card-subinfo">{row["keyword"]} | {row["media"]} | {row["pubDate"]}</p>'
-        # 세번째~다섯번째 줄: 요약내용 (contenet1, contenet2, contenet3)
+        # 세번째~다섯번째 줄: 요약내용 (content1, content2, content3)
         content_html = ""
         for col in ["content1", "content2", "content3"]:
             if pd.notna(row[col]) and row[col].strip() != "":
